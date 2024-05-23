@@ -1,9 +1,55 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 
-function Appointment () {
+function Appointment() {
     return (
-        <Text>Hello appointments</Text>
+        <View>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+            <Text>Hello appointments</Text>
+        </View>
+
     );
 }
 

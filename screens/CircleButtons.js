@@ -1,34 +1,35 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, Alert } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const CircularButtons = ({ downBoyFun, navigation }) => {
+const CircularButtons = ({ downBoyFun }) => {
+  const navigation = useNavigation();
   const radius = 100;
   const numOfButtons = 6;
   const angle = 2 * Math.PI / numOfButtons;
   const [minimized, setMinimized] = useState(false);
 
   const buttonFunctions = [
-    () => navigation.navigate('Screen1'),
-    () => navigation.navigate('Screen1'),
-    () => navigation.navigate('Screen1'),
-    () => navigation.navigate('Screen1'),
-    // () => Alert.alert('butt 5 in the hive'),navigation.navigate('Screen1'),
-    // () => navigation.navigate('Screen1'),
+    () => navigation.navigate('Appointment'),
+    () => navigation.navigate('Screen2'),
+    () => navigation.navigate('Screen3'),
+    () => navigation.navigate('Screen4'),
+    () => navigation.navigate('Screen5'),
+    () => navigation.navigate('Screen6'),
   ];
 
   const handleButtonPress = (index) => {
-
-    buttonFunctions[index]();
+    const func = buttonFunctions[index];
+    if (typeof func === 'function') {
+      func();
+      console.log(`Navigating to screen at index ${index}`);
+    } else {
+      console.warn(`No function defined for button at index ${index}`);
+    }
   };
-
 
   return (
     <View style={styles.container}>
-
-      <View>
-        <Text>Anything really</Text>
-      </View>
-
       <View style={styles.circle}>
         {!minimized && (
           <>
@@ -53,9 +54,9 @@ const CircularButtons = ({ downBoyFun, navigation }) => {
             })}
           </>
         )}
-        {/* <TouchableOpacity onPress={() => downBoyFun()}>
-          {/* <Text style={styles.buttonText}>{minimized ? 'Open' : 'Close'}</Text> */}
-        {/* </TouchableOpacity>   */}
+        <TouchableOpacity onPress={downBoyFun} style={styles.toggleButton}>
+          <Text style={styles.buttonText}>{minimized ? 'Open' : 'Close'}</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -64,30 +65,34 @@ const CircularButtons = ({ downBoyFun, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
   },
   circle: {
-    width: 2 * 100,
-    height: 2 * 100,
+    width: 200,
+    height: 200,
     borderRadius: 100,
-    position: 'relative',
-    backgroundColor: '#f0f0f0',
-    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: 'black',
     alignItems: 'center',
+    justifyContent: 'center',
+    position: 'relative',
   },
   button: {
+    position: 'absolute',
     width: 40,
     height: 40,
     borderRadius: 20,
-    justifyContent: 'center',
+    backgroundColor: 'blue',
     alignItems: 'center',
-    position: 'absolute',
-    backgroundColor: '#007000',
+    justifyContent: 'center',
   },
   buttonText: {
-    color: 'black',
-    fontSize: 16,
+    color: 'white',
+  },
+  toggleButton: {
+    position: 'absolute',
+    bottom: 20,
   },
 });
 
