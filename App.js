@@ -7,13 +7,14 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import CircleButtons from './screens/CircleButtons';
 import Aboutus from './screens/pages/aboutus';
-import Appointment from './screens/pages/appointment';
+import Homescreen from './screens/pages/homeScreen';
 import Blogs from './screens/pages/blogs';
 import Services from './screens/pages/services';
+import Contactus from './screens/pages/contactus';
 
 const Stack = createStackNavigator();
 
-function App() {
+export default function App() {
   const [showButtons, setShowButtons] = useState(false);
 
   const toggleButtons = () => {
@@ -39,11 +40,12 @@ function App() {
           />
 
           <Stack.Navigator
-            initialRouteName="Appointment" screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="Appointment" component={Appointment} />
+            initialRouteName="Home Screen" screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Home Screen" component={Homescreen} />
             <Stack.Screen name="Blogs" component={Blogs} />
             <Stack.Screen name="Services" component={Services} />
-            <Stack.Screen name="Aboutus" component={Aboutus} />
+            <Stack.Screen name="About us" component={Aboutus} />
+            <Stack.Screen name='Contact us' component={Contactus} />
           </Stack.Navigator>
 
           {showButtons && <CircleButtons downBoyFun={toggleButtons} />}
@@ -89,4 +91,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;

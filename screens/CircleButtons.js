@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const CircularButtons = ({ downBoyFun }) => {
+export default function CircularButtons() {
   const navigation = useNavigation();
   const radius = 100;
   const numOfButtons = 6;
   const angle = 2 * Math.PI / numOfButtons;
-  const [minimized, setMinimized] = useState(false);
+  const [minimized] = useState(false);
 
   const buttonFunctions = [
-    () => navigation.navigate('Appointment'),
-    () => navigation.navigate('Screen2'),
-    () => navigation.navigate('Screen3'),
-    () => navigation.navigate('Screen4'),
-    () => navigation.navigate('Screen5'),
+    () => navigation.navigate('Home Screen'),
+    () => navigation.navigate('Services'),
+    () => navigation.navigate('Contact us'),
+    () => navigation.navigate('Blogs'),
+    () => navigation.navigate('About us'),
     () => navigation.navigate('Screen6'),
   ];
 
@@ -54,9 +54,9 @@ const CircularButtons = ({ downBoyFun }) => {
             })}
           </>
         )}
-        <TouchableOpacity onPress={downBoyFun} style={styles.toggleButton}>
+        {/* <TouchableOpacity onPress={downBoyFun} style={styles.toggleButton}>
           <Text style={styles.buttonText}>{minimized ? 'Open' : 'Close'}</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     </View>
   );
@@ -96,4 +96,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CircularButtons;
+

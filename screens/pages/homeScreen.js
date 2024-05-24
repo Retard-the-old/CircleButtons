@@ -2,7 +2,7 @@ import React from "react";
 import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-function Appointment() {
+function Homescreen() {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <View>
@@ -104,4 +104,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default Appointment;
+export default Homescreen;
