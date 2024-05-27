@@ -7,7 +7,7 @@ export default function CircularButtons() {
   const radius = 100;
   const numOfButtons = 6;
   const angle = 2 * Math.PI / numOfButtons;
-  const [minimized] = useState(false);
+  const [overlayVisible, setOverlayVisible] = useState(true);
 
   const buttonFunctions = [
     () => navigation.navigate('Home Screen'),
@@ -29,10 +29,19 @@ export default function CircularButtons() {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.circle}>
-        {!minimized && (
-          <>
+    <View style={{ flex: 1 }}>
+      {/* Main Content */}
+      {/* <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>Main Content Here</Text>
+        <TouchableOpacity onPress={() => setOverlayVisible(true)} style={styles.toggleButton}>
+          <Text style={styles.buttonText}>Show Circular Buttons</Text>
+        </TouchableOpacity>
+      </View> */}
+
+      {/* Overlay */}
+      {overlayVisible && (
+        <View style={styles.overlay}>
+          <View style={styles.circle}>
             {Array.from({ length: numOfButtons }).map((_, index) => {
               const x = radius * Math.cos(index * angle);
               const y = radius * Math.sin(index * angle);
@@ -52,23 +61,39 @@ export default function CircularButtons() {
                 </TouchableOpacity>
               );
             })}
-          </>
-        )}
-        {/* <TouchableOpacity onPress={downBoyFun} style={styles.toggleButton}>
-          <Text style={styles.buttonText}>{minimized ? 'Open' : 'Close'}</Text>
-        </TouchableOpacity> */}
-      </View>
+            {/* <TouchableOpacity onPress={() => setOverlayVisible(true)} style={styles.closeButton}>
+              <Text style={styles.buttonText}>Close</Text>
+            </TouchableOpacity> */}
+          </View>
+        </View>
+      )}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
+  // overlay: {
+  //   position: 'absolute',
+  //   top: 0,
+  //   left: 0,
+  //   right: 0,
+  //   bottom: 0,
+  //   backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  // },
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0,0,0,0.5)',
     justifyContent: 'center',
+    alignItems: 'center',
   },
   circle: {
+    position:'absolute',
     width: 200,
     height: 200,
     borderRadius: 100,
@@ -77,6 +102,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)', // White background with transparency
   },
   button: {
     position: 'absolute',
@@ -91,9 +117,16 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   toggleButton: {
+    position:'absolute',
+    padding: 10,
+    backgroundColor: 'blue',
+    borderRadius: 10,
+  },
+  closeButton: {
     position: 'absolute',
-    bottom: 20,
+    bottom: -30,
+    padding: 10,
+    backgroundColor: 'red',
+    borderRadius: 10,
   },
 });
-
-

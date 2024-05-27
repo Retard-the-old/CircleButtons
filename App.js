@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import React, { useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Text, View, TouchableOpacity, StyleSheet, Image, StatusBar, SafeAreaView } from 'react-native';
+import { Text, View, TouchableOpacity, StyleSheet, Image, StatusBar, SafeAreaView, ImageBackground } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -14,49 +14,83 @@ import Contactus from './screens/pages/contactus';
 
 const Stack = createStackNavigator();
 
-export default function App() {
-  const [showButtons, setShowButtons] = useState(false);
+const LogoTitle = () => (
+  <View style={styles.logoContainer}>
+    <Image
+      style={styles.logo}
+      source={require('./assets/logo.png')}
+      resizeMode="center"
+    />
+  </View>
+);
 
-  const toggleButtons = () => {
-    setShowButtons(!showButtons);
+
+
+
+export default function App() {
+  const [overlayVisible, setOverlayVisible] = useState(false);
+
+  // const toggleButtons = () => {
+  //   setShowButtons(!showButtons);
+  // };
+
+  const toggleOverlay = () => {
+    setOverlayVisible(!overlayVisible);
   };
 
   return (
+
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <NavigationContainer>
-        <View style={styles.imageContainer}>
-          <Image
-            source={require('./assets/logo.png')}
-            style={styles.image}
-            resizeMode="contain"
-          />
-        </View>
-        
-        <SafeAreaView style={styles.container}>
-          <StatusBar
-            barStyle="light-content"
-            backgroundColor="#6a51ae"
-            hidden={false}
-          />
+      <StatusBar
+        barStyle="light-content"
+        translucent={true}
+        backgroundColor="rgba(0, 0, 0, 0.5)"
+      />
+      {/* <ImageBackground source={require('./assets/background.png')} style={styles.imgbackground} resizeMode='cover' /> */}
+      <View style={styles.pageContainer}>
 
-          <Stack.Navigator
-            initialRouteName="Home Screen" screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="Home Screen" component={Homescreen} />
-            <Stack.Screen name="Blogs" component={Blogs} />
-            <Stack.Screen name="Services" component={Services} />
-            <Stack.Screen name="About us" component={Aboutus} />
-            <Stack.Screen name='Contact us' component={Contactus} />
-          </Stack.Navigator>
 
-          {showButtons && <CircleButtons downBoyFun={toggleButtons} />}
 
-          <View style={styles.circleCont}>
-            <TouchableOpacity onPress={toggleButtons} style={styles.button}>
-              <Text style={styles.buttonText}>Show/Hide Circular Buttons</Text>
-            </TouchableOpacity>
-          </View>
-        </SafeAreaView>
-      </NavigationContainer>
+        <NavigationContainer>
+
+          <SafeAreaView style={styles.container}>
+
+
+
+            <Stack.Navigator
+              initialRouteName="App"
+              // screenOptions={{ headerShown: true }}
+              screenOptions={{
+                headerStyle: {
+                  backgroundColor: '#f4511e',
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                  fontWeight: 'bold',
+                },
+                headerRight: () => <LogoTitle />,
+              }}
+            >
+              <Stack.Screen name="Home Screen" component={Homescreen} />
+              <Stack.Screen name="Blogs" component={Blogs} />
+              <Stack.Screen name="Services" component={Services} />
+              <Stack.Screen name="About us" component={Aboutus} />
+              <Stack.Screen name='Contact us' component={Contactus} />
+            </Stack.Navigator>
+
+            {/* {showButtons && <CircleButtons downBoyFun={toggleButtons} />} */}
+
+            {overlayVisible && <CircleButtons downBoyFun={toggleOverlay} />}
+
+            <View style={styles.circleCont}>
+              <TouchableOpacity onPress={toggleOverlay} style={styles.button}>
+                <Text style={styles.buttonText}>Show/Hide Circular Buttons</Text>
+              </TouchableOpacity>
+            </View>
+          </SafeAreaView>
+        </NavigationContainer>
+      </View>
+
     </GestureHandlerRootView>
   );
 }
@@ -64,10 +98,22 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: '100%',
+    height: '100%'
+  },
+  // imgbackground: {
+  //   borderRadius: 40
+  // },
+  pageContainer: {
+    //flex: 1,
+    width: '100%',
+    height: '100%'
   },
   imageContainer: {
-    alignItems: 'center',
-    marginVertical: 20,
+    //flex:1,
+    alignItems: 'stretch',
+    justifyContent: 'space-between',
+    width: '100%'
   },
   image: {
     width: '80%',

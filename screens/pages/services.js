@@ -1,10 +1,22 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, StyleSheet, View, Image } from "react-native";
 
-function Services () {
+export default function Services() {
     return (
-        <Text>Hello services</Text>
-    );
-}
+        <View style={styles.containerMain}>
+            <Text>Hello services</Text>
 
-export default Services;
+            <View style={styles.serviceView}>
+                <View style={styles.service}>
+                    <Image source={''}/>
+                </View>
+            </View>
+        </View>
+    );
+};
+
+const styles = StyleSheet.create({
+    containerMain: {
+        flex: 1
+    }
+})

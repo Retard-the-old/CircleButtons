@@ -1,9 +1,57 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, View} from "react-native";
 
-function Blogs () {
+function Blogs() {
     return (
-        <Text>Hello Blogs</Text>
+        <View>
+            <Text>Hello Blogs</Text>
+            <View>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                        </View>
+                        <View>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                        </View><View>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                        </View>
+                        <View>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                            <Text>Hello Home screen</Text>
+                        </View></View>
     );
 }
 

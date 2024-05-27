@@ -1,13 +1,18 @@
 import React from "react";
-import { Text, Image} from "react-native";
-import { View } from "react-native-reanimated/lib/typescript/Animated";
+import { Text, Image, View, StyleSheet} from "react-native";
 
 export default function Contactus () {
     return (
-        <View>
-            <Text>Hello Blogs</Text>
+        <View style={styles.containerMain}>
+            <Text>Hello contact us</Text>
             <Image
             source={require('../../assets/oldmaneng.png')}/>
         </View>
     )
 };
+
+const styles=StyleSheet.create ({
+    containerMain: {
+        flex: 1
+    }
+})
